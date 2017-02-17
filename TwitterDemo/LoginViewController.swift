@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
             print("I got a token!")
             print(requestToken?.token! ?? "No token!")
             
-            let url = NSURL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken?.token)")
+            let url = NSURL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken!.token!)")
             print(url ?? "No url!")
             UIApplication.shared.openURL((url as? URL)!)
             
