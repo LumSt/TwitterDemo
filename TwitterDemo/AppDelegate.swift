@@ -43,41 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        print(url.description)
-        let requestToken = BDBOAuth1Credential(queryString: url.query)
-        let twitterClient = BDBOAuth1SessionManager(baseURL: URL(string:"https://api.twitter.com"), consumerKey: "6AIJcovONDCExACdSFRyb41Qp", consumerSecret: "wwRyhcedhVsN0ARnUarQzgZF0b5BkHUPfB6e1dbWWw4cbrIgjL")
         
-        twitterClient?.fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: requestToken,
-            success: { (accessToken: BDBOAuth1Credential?) in
-            print("I got the access token!")
-            
-                twitterClient?.get("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
-                    //print("account: \(response)")
-                    let userDictionary = response as? NSDictionary
-                    
-                    let user = User(dictionary: userDictionary!)
-                    print("name: \(user.name)")
-                    
-                }, failure: { (task: URLSessionDataTask?, error: Error) in
-                    print("GET error: \(error.localizedDescription)")
-                })
-                
-                twitterClient?.get("1.1/statuses/home_timeline.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
-                    let dictionary = response as? [NSDictionary]
-                    
-                    let tweets = Tweet.tweetsWithArray(dictionaries: dictionary!)
-                    for tweet in tweets {
-                        print("\(tweet.text)")
-                    }
-                }, failure: { (task: URLSessionDataTask?, error: Error) in
-                    
-                })
-                
-            }, failure: { (error: Error?) in
-                print("Access token error:\(error?.localizedDescription)")
-                
-                })
-        
+        TwitterClient.sharedInstance?.handleOpenUrl(url: url as NSURL)
+
         return true
     }
 }
