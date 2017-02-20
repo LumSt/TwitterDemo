@@ -17,9 +17,9 @@ class TweetsViewController: UIViewController {
 
         TwitterClient.sharedInstance?.homeTimeline(success: { (tweets: [Tweet]) in
             self.tweets = tweets
-            for tweet in tweets {
-                print(tweet.text)
-            }
+//            for tweet in tweets {
+//                print(tweet.text)
+//            }
         }, failure: { (error: NSError) in
             print(error.localizedDescription)
         })
@@ -31,7 +31,14 @@ class TweetsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func onLogoutButton(_ sender: Any) {
+        TwitterClient.sharedInstance?.logout()
+        print("Log out!")
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: User.userDidLogoutNotification), object: nil)
+    }
 
+    
     /*
     // MARK: - Navigation
 
