@@ -57,7 +57,7 @@ class User: NSObject {
         }
         
         set(user) {
-            //_currentUser = user
+            _currentUser = user
             
             let defaults = UserDefaults.standard
             
