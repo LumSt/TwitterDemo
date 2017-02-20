@@ -23,14 +23,16 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         
         TwitterClient.sharedInstance?.homeTimeline(success: { (tweets: [Tweet]) in
             self.tweets = tweets
-            for tweet in tweets {
-                print(tweet.text)
-            }
+//            for tweet in tweets {
+//                print(tweet.text)
+//            }
+            
+            self.tableView.reloadData()
         }, failure: { (error: NSError) in
             print(error.localizedDescription)
         })
         
-        tableView.reloadData()
+        
     }
 
     override func didReceiveMemoryWarning() {
