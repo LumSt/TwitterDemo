@@ -11,7 +11,7 @@ import UIKit
 class User: NSObject {
 
     var name: NSString?
-    var screenName: NSString?
+    var screenName: NSString!
     var profileUrl: NSURL?
     var tagline: NSString?
     var dictionary: NSDictionary?
@@ -67,7 +67,8 @@ class User: NSObject {
                 
                 defaults.set(data, forKey: "currentUserData")
             } else {
-                defaults.set(nil, forKey: "currentUserData")
+                defaults.removeObject(forKey: "currentUserData")
+//                defaults.set(nil, forKey: "currentUserData")
             }
             
             defaults.synchronize()

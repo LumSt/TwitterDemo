@@ -14,7 +14,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBOutlet weak var tableView: UITableView!
     
-    var tweets: [Tweet]!
+    var tweets: [Tweet] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +49,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 20
+        return tweets.count
     }
     
     
@@ -59,17 +59,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
         
-        let tweet = tweets?[indexPath.row]
-        
-        
-        cell.contributorLabel.text = tweet?.name as String?
-        cell.tweetTextLabel.text = tweet?.text as String?
-        if let imageUrl = tweet?.profileImageUrl {
-            cell.profileImage.setImageWith((imageUrl) as URL)
-        } else {
-            print("NO ImageUrl!")
-        }
-        
+        cell.tweet = tweets[indexPath.row]
 
         return cell
     }
