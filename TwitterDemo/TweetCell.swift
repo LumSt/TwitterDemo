@@ -76,6 +76,7 @@ class TweetCell: UITableViewCell {
         print("retweet button is clicked!")
         TwitterClient.sharedInstance!.retweet(param: ["id":tweetId!], success: { (tweet) in
             self.retweetCountLabel.text = String(describing: tweet!.retweetCount!)
+            self.retweetButton.setImage(#imageLiteral(resourceName: "retweet-icon-green"), for: .normal)
         }, failure: { (error:Error) in
             print("Error: \(error.localizedDescription)")
         })
@@ -85,6 +86,7 @@ class TweetCell: UITableViewCell {
         print("favorite button is clicked!")
         TwitterClient.sharedInstance?.favorite(param: ["id":tweetId!], success: { (tweet) in
             self.favoriteCountLabel.text = String(describing: tweet!.favoriteCount!)
+            self.favoriteButton.setImage(#imageLiteral(resourceName: "favor-icon-red"), for: .normal)
         }, failure: { (error: Error) in
             print("Error: \(error.localizedDescription)")
         })
