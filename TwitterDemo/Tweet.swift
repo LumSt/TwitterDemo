@@ -12,11 +12,17 @@ class Tweet: NSObject {
 
     var text: String?
     var timeStamp: Date?
-    var retweetCount: Int
-    var favoritesCount: Int
+//    var retweetCount: Int
+//    var favoritesCount: Int
     var name: String?
     var screenName: String!
     var profileImageUrl: URL?
+    var id: NSNumber?
+    var retweetCount:Int?
+    var favoriteCount: Int?
+    var retweetedStatus: NSDictionary?
+
+    
     
 //    var timestampString: String!
     
@@ -33,9 +39,8 @@ class Tweet: NSObject {
 //            print(timeStamp!)
         }
         
-        retweetCount = (dictionary["retweet_count"] as? Int) ?? 0
-        
-        favoritesCount = (dictionary["favourites_count"] as? Int) ?? 0
+//        retweetCount = (dictionary["retweet_count"] as? Int) ?? 0
+//        favoritesCount = (dictionary["favourites_count"] as? Int) ?? 0
         
         user = dictionary["user"] as? NSDictionary
         
@@ -52,6 +57,13 @@ class Tweet: NSObject {
             print("NO profile image url!")
         }
         
+        id = dictionary["id"] as? Int as NSNumber?
+        
+        retweetCount = dictionary["retweet_count"] as? Int ?? 0
+        
+        favoriteCount = dictionary["favorite_count"] as? Int ?? 0
+        
+        retweetedStatus = dictionary["retweet_status"] as? NSDictionary
     }
     
     class func tweetsWithArray(dictionaries: [NSDictionary]) -> [Tweet] {
@@ -63,11 +75,18 @@ class Tweet: NSObject {
             tweets.append(tweet)
         }
         
+
 //        print("TWEETS!!!!!!")
-//        for tweet in tweets {
-//            print( tweet.screenName )
-//        }
+        for tweet in tweets {
+//            print( tweet.id! )
+        }
         
         return tweets 
+    }
+    
+    class func tweetAsDictionary(_ dic: NSDictionary) -> Tweet{
+        let tweet = Tweet(dictionary: dic)
+        
+        return tweet
     }
 }

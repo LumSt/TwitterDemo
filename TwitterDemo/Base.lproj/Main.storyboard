@@ -106,26 +106,48 @@
                                                     <state key="normal" title="Button" image="reply-icon"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2YS-Hq-FxV">
-                                                    <rect key="frame" x="172" y="98" width="84" height="30"/>
+                                                    <rect key="frame" x="171" y="98" width="85" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <state key="normal" title="Button" image="retweet-icon"/>
+                                                    <connections>
+                                                        <action selector="onRetweetButton:" destination="gqQ-Kl-jd8" eventType="touchUpInside" id="vKr-Zu-fLq"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Bc-Lq-XRD">
                                                     <rect key="frame" x="278" y="98" width="84" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <state key="normal" title="Button" image="favor-icon"/>
+                                                    <connections>
+                                                        <action selector="onFavoriteButton:" destination="gqQ-Kl-jd8" eventType="touchUpInside" id="rFe-FF-N7B"/>
+                                                    </connections>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UxC-H0-xz9">
+                                                    <rect key="frame" x="200" y="104" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jG2-qm-xBW">
+                                                    <rect key="frame" x="299" y="104" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="contributorLabel" destination="Suw-ZK-aWQ" id="JCD-ji-ESy"/>
                                             <outlet property="dateLabel" destination="gSa-MF-XAo" id="Cvv-Lb-jmK"/>
                                             <outlet property="favoriteButton" destination="6Bc-Lq-XRD" id="3GE-bh-zJl"/>
+                                            <outlet property="favoriteCountLabel" destination="jG2-qm-xBW" id="Ho0-4N-3dP"/>
                                             <outlet property="profileImage" destination="hJX-tr-Wnf" id="tQa-sg-haJ"/>
                                             <outlet property="replyButton" destination="gZX-99-HCk" id="Hpc-fG-tM1"/>
                                             <outlet property="retweetButton" destination="2YS-Hq-FxV" id="vAf-5r-T9M"/>
+                                            <outlet property="retweetCountLabel" destination="UxC-H0-xz9" id="KbD-lW-jug"/>
                                             <outlet property="screenNameLabel" destination="8Z6-Vg-9KT" id="oKJ-hn-jsv"/>
                                             <outlet property="tweetTextLabel" destination="LuK-uq-a5s" id="ih4-kP-UGC"/>
                                         </connections>

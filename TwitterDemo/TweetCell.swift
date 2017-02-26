@@ -19,7 +19,11 @@ class TweetCell: UITableViewCell {
     
     @IBOutlet weak var replyButton: UIButton!
     @IBOutlet weak var retweetButton: UIButton!
+    @IBOutlet weak var retweetCountLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var favoriteCountLabel: UILabel!
+    
+    var tweetId: NSNumber?
     
     
     var tweet: Tweet! {
@@ -39,7 +43,20 @@ class TweetCell: UITableViewCell {
             
             replyButton.setImage(#imageLiteral(resourceName: "reply-icon"), for: .normal)
             
+            retweetCountLabel.text = String(describing: tweet.retweetCount!)
+            
+            favoriteCountLabel.text = String(describing: tweet.favoriteCount!)
+            
             retweetButton.setImage(#imageLiteral(resourceName: "retweet-icon"), for: .normal)
+            
+            if tweet.retweetedStatus != nil {
+                let retweet = Tweet.tweetAsDictionary(tweet.retweetedStatus!)
+                tweetId = retweet.id
+                
+//                tweetId = Tweet.tweetAsDictionary(dic: tweet).id
+            } else {
+                tweetId = tweet.id
+            }
 
         }
     }
@@ -53,6 +70,24 @@ class TweetCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    @IBAction func onRetweetButton(_ sender: Any) {
+        print("retweet button is clicked!")
+        TwitterClient.sharedInstance!.retweet(param: ["id":tweetId!], success: { (tweet) in
+            self.retweetCountLabel.text = String(describing: tweet!.retweetCount!)
+        }, failure: { (error:Error) in
+            print("Error: \(error.localizedDescription)")
+        })
+    }
+    
+    @IBAction func onFavoriteButton(_ sender: Any) {
+        print("favorite button is clicked!")
+        TwitterClient.sharedInstance?.favorite(param: ["id":tweetId!], success: { (tweet) in
+            self.favoriteCountLabel.text = String(describing: tweet!.favoriteCount!)
+        }, failure: { (error: Error) in
+            print("Error: \(error.localizedDescription)")
+        })
     }
 
 }

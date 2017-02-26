@@ -95,4 +95,26 @@ class TwitterClient: BDBOAuth1SessionManager {
 //            print("GET error: \(error.localizedDescription)")
         })
     }
+    
+    func retweet(param: NSDictionary?, success: @escaping (_ tweet: Tweet?) -> (), failure: @escaping (Error) -> ()) {
+        post("1.1/statuses/retweet/\(param!["id"]!).json", parameters: param, progress: nil, success: { (task:URLSessionDataTask, reponse: Any?) in
+            
+            let tweet = Tweet.tweetAsDictionary(reponse as! NSDictionary)
+            
+            success(tweet)
+            print("retweet is successful!")
+        }) { (task: URLSessionDataTask?, error: Error) in
+            failure(error)
+        }
+    }
+    
+    func favorite(param: NSDictionary?, success: @escaping (_ tweet: Tweet?) -> (), failure: @escaping (Error) -> ()) {
+        post("1.1/favorites/create.json", parameters: param, progress: nil, success: { (task:URLSessionDataTask, reponse: Any?) in
+            let tweet = Tweet.tweetAsDictionary(reponse as! NSDictionary)
+            
+            success(tweet)
+        }) { (task: URLSessionDataTask?, error: Error) in
+            failure(error)
+        }
+    }
 }
