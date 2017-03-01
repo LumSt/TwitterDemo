@@ -23,6 +23,8 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var favoriteCountLabel: UILabel!
     
+    
+    
     var tweetId: NSNumber?
     
     
@@ -71,6 +73,7 @@ class TweetCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
     
     @IBAction func onRetweetButton(_ sender: Any) {
         print("retweet button is clicked!")

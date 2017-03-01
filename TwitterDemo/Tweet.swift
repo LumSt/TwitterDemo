@@ -12,8 +12,6 @@ class Tweet: NSObject {
 
     var text: String?
     var timeStamp: Date?
-//    var retweetCount: Int
-//    var favoritesCount: Int
     var name: String?
     var screenName: String!
     var profileImageUrl: URL?
@@ -22,8 +20,6 @@ class Tweet: NSObject {
     var favoriteCount: Int?
     var retweetedStatus: NSDictionary?
 
-    
-    
 //    var timestampString: String!
     
     var user: NSDictionary?
@@ -38,10 +34,7 @@ class Tweet: NSObject {
             timeStamp = formatter.date(from: timestampString) as Date?
 //            print(timeStamp!)
         }
-        
-//        retweetCount = (dictionary["retweet_count"] as? Int) ?? 0
-//        favoritesCount = (dictionary["favourites_count"] as? Int) ?? 0
-        
+                
         user = dictionary["user"] as? NSDictionary
         
         name = user?["name"] as? String
