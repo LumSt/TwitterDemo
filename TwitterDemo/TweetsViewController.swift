@@ -81,7 +81,17 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
             let tweet = tweets[(indexPath!.row)]
             let vc = segue.destination as! detailViewController
             vc.tweet = tweet
-            print("RUN")
+            print("To details view")
+        }
+        if segue.identifier == "toProfilePage" {
+            let button = sender as! UIButton
+            let view = button.superview
+            let cell = view?.superview
+            let indexPath = tableView.indexPath(for: cell as! UITableViewCell)
+            let tweet = tweets[(indexPath?.row)!]
+            let vc = segue.destination as! ProfileViewController
+            vc.tweet = tweet
+            print("To profile page")
         }
     }
     

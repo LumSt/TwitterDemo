@@ -19,10 +19,10 @@ class Tweet: NSObject {
     var retweetCount:Int?
     var favoriteCount: Int?
     var retweetedStatus: NSDictionary?
-
-//    var timestampString: String!
     
     var user: NSDictionary?
+    
+    var profileBackgroudImageUrl: URL?
     
     init(dictionary: NSDictionary) {
         text = dictionary["text"] as? String
@@ -57,6 +57,14 @@ class Tweet: NSObject {
         favoriteCount = dictionary["favorite_count"] as? Int ?? 0
         
         retweetedStatus = dictionary["retweet_status"] as? NSDictionary
+        
+        let profileBackgroundImageUrlString = user?["profile_background_image_url_https"] as? String
+        if let profileBackgroundImageUrlString = profileBackgroundImageUrlString {
+            profileBackgroudImageUrl = URL(string: profileBackgroundImageUrlString)
+        } else {
+            profileBackgroudImageUrl = nil
+            print("NO backbround image url!")
+        }
     }
     
     class func tweetsWithArray(dictionaries: [NSDictionary]) -> [Tweet] {

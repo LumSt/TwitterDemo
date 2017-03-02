@@ -23,6 +23,7 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var favoriteCountLabel: UILabel!
     
+    @IBOutlet weak var segueButton: UIButton!
     
     
     var tweetId: NSNumber?
