@@ -54,6 +54,15 @@
                     <view key="view" contentMode="scaleToFill" id="Y9T-gp-82c">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" keyboardDismissMode="interactive" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4Av-zO-a1X">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="twitter"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="EAW-Ia-rKY">
@@ -62,12 +71,19 @@
                                 <action selector="onCancelButton:" destination="zhP-DW-pXx" id="Fij-GO-JoB"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="5vA-rX-ZWS"/>
+                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="5vA-rX-ZWS">
+                            <connections>
+                                <action selector="onTweetButton:" destination="zhP-DW-pXx" id="m1m-UQ-9YZ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="textView" destination="4Av-zO-a1X" id="hbp-Iy-tCw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9jX-LG-aJN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1615" y="-555"/>
+            <point key="canvasLocation" x="1613.5999999999999" y="-555.47226386806597"/>
         </scene>
         <!--Tweets View Controller-->
         <scene sceneID="ZO5-4e-TgM">
@@ -89,7 +105,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="152"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gqQ-Kl-jd8" id="OQe-w1-cgv">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="151"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="151.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="contributor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Suw-ZK-aWQ">
@@ -231,6 +247,11 @@
                         <barButtonItem key="leftBarButtonItem" title="Log out" id="R5O-im-0uJ">
                             <connections>
                                 <action selector="onLogoutButton:" destination="PMw-6r-Ei8" id="aiJ-5n-0Yo"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="edit-icon" id="mH8-1A-vby">
+                            <connections>
+                                <segue destination="7j7-mE-ewf" kind="presentation" id="6cq-1o-5YD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -496,8 +517,12 @@
     </scenes>
     <resources>
         <image name="addfriend-icon" width="30" height="29"/>
+        <image name="edit-icon" width="30" height="27"/>
         <image name="favor-icon" width="30" height="30"/>
         <image name="reply-icon" width="30" height="30"/>
         <image name="retweet-icon" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="PyV-Iz-K1n"/>
+    </inferredMetricsTieBreakers>
 </document>

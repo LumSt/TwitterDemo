@@ -8,12 +8,20 @@
 
 import UIKit
 
-class ReplyViewController: UIViewController {
+class ReplyViewController: UIViewController, UITextViewDelegate {
 
+    @IBOutlet weak var textView: UITextView!
+    
+    var text: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        textView.delegate = self
+        textView.becomeFirstResponder()
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,12 +30,16 @@ class ReplyViewController: UIViewController {
     }
     
     @IBAction func onCancelButton(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true) { 
-            
-        }
-        
+        self.dismiss(animated: true)         
     }
     
+    @IBAction func onTweetButton(_ sender: UIBarButtonItem) {
+        TwitterClient.sharedInstance?.tweet(text: text, success: { (Tweet) in
+            self.text = self.textView.text
+            print(self.text)
+            print("Tweet successfully!")
+        })
+    }
 
     /*
     // MARK: - Navigation
