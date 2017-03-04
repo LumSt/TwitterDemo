@@ -26,7 +26,7 @@ class ReplyViewController: UIViewController, UITextViewDelegate {
         textView.becomeFirstResponder()
         
         if isToReply! {
-            textView.text = "@\(user.screenName!) "
+            textView.text = "@\(tweet.screenName!) "
         }
         
         

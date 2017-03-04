@@ -53,7 +53,8 @@ class detailViewController: UIViewController {
     @IBAction func onRetweetButton(_ sender: Any) {
         print("retweet button is clicked!")
         TwitterClient.sharedInstance!.retweet(param: ["id":tweetId], success: { (tweet) in
-            self.retweetsCount.text = String(describing: tweet!.retweetCount!)
+            self.retweetsCount.text = "\(String(describing: tweet!.retweetCount!)) RETWEETS"
+            //String(describing: tweet!.retweetCount!)
             self.retweetButton.setImage(#imageLiteral(resourceName: "retweet-icon-green"), for: .normal)
         }, failure: { (error:Error) in
             print("Error: \(error.localizedDescription)")
@@ -63,7 +64,8 @@ class detailViewController: UIViewController {
     @IBAction func onFavoriteButton(_ sender: Any) {
         print("favorite button is clicked!")
         TwitterClient.sharedInstance?.favorite(param: ["id":tweetId], success: { (tweet) in
-            self.likesCount.text = String(describing: tweet!.favoriteCount!)
+            self.likesCount.text = "\(String(describing: tweet!.favoriteCount!)) LIKES"
+                //String(describing: tweet!.favoriteCount!)
             self.favoriteButton.setImage(#imageLiteral(resourceName: "favor-icon-red"), for: .normal)
         }, failure: { (error: Error) in
             print("Error: \(error.localizedDescription)")
@@ -71,14 +73,20 @@ class detailViewController: UIViewController {
 
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "isToReply" {
+            let navigation = segue.destination as! UINavigationController
+            let vc = navigation.viewControllers.first as! ReplyViewController
+            vc.isToReply = true
+            vc.tweet = tweet
+        }
     }
-    */
+    
 
 }

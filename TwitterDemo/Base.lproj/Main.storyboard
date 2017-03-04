@@ -141,8 +141,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gZX-99-HCk">
-                                                    <rect key="frame" x="64" y="99" width="84" height="30"/>
+                                                    <rect key="frame" x="64" y="99" width="30" height="30"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <state key="normal" image="reply-icon"/>
                                                     <connections>
                                                         <segue destination="7j7-mE-ewf" kind="presentation" identifier="toReply" id="kPk-0Z-v2R"/>
@@ -169,8 +170,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2YS-Hq-FxV">
-                                                    <rect key="frame" x="165" y="98" width="66" height="30"/>
+                                                    <rect key="frame" x="165" y="98" width="30" height="30"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <state key="normal" image="retweet-icon"/>
                                                     <connections>
                                                         <action selector="onRetweetButton:" destination="gqQ-Kl-jd8" eventType="touchUpInside" id="vKr-Zu-fLq"/>
@@ -194,7 +196,7 @@
                                                 <constraint firstItem="2YS-Hq-FxV" firstAttribute="centerY" secondItem="gZX-99-HCk" secondAttribute="centerY" id="A6h-EN-GH4"/>
                                                 <constraint firstItem="jG2-qm-xBW" firstAttribute="centerY" secondItem="gZX-99-HCk" secondAttribute="centerY" id="BH8-uH-Oqp"/>
                                                 <constraint firstItem="gSa-MF-XAo" firstAttribute="leading" secondItem="8Z6-Vg-9KT" secondAttribute="trailing" constant="3" id="BIR-aZ-WST"/>
-                                                <constraint firstItem="6Bc-Lq-XRD" firstAttribute="leading" secondItem="2YS-Hq-FxV" secondAttribute="trailing" constant="22" id="BTv-CD-MBj"/>
+                                                <constraint firstItem="6Bc-Lq-XRD" firstAttribute="leading" secondItem="2YS-Hq-FxV" secondAttribute="trailing" constant="70" id="BTv-CD-MBj"/>
                                                 <constraint firstItem="2YS-Hq-FxV" firstAttribute="centerX" secondItem="OQe-w1-cgv" secondAttribute="centerX" id="BqB-wn-x9M"/>
                                                 <constraint firstItem="hJX-tr-Wnf" firstAttribute="top" secondItem="OQe-w1-cgv" secondAttribute="top" constant="8" id="E0g-mb-uQ2"/>
                                                 <constraint firstItem="hJX-tr-Wnf" firstAttribute="leading" secondItem="OQe-w1-cgv" secondAttribute="leading" constant="8" id="Iv0-ba-4e1"/>
@@ -202,9 +204,9 @@
                                                 <constraint firstItem="LuK-uq-a5s" firstAttribute="top" secondItem="Suw-ZK-aWQ" secondAttribute="bottom" constant="6" id="O68-pn-tuk"/>
                                                 <constraint firstItem="UxC-H0-xz9" firstAttribute="leading" secondItem="2YS-Hq-FxV" secondAttribute="trailing" id="QYi-v5-SsO"/>
                                                 <constraint firstItem="LuK-uq-a5s" firstAttribute="leading" secondItem="Suw-ZK-aWQ" secondAttribute="leading" id="SUc-E9-vub"/>
-                                                <constraint firstItem="gZX-99-HCk" firstAttribute="leading" secondItem="OQe-w1-cgv" secondAttribute="leading" constant="60" id="T0Z-o4-toE"/>
                                                 <constraint firstItem="mlz-p8-9Gu" firstAttribute="top" secondItem="OQe-w1-cgv" secondAttribute="top" constant="8" id="TAw-Ci-l51"/>
                                                 <constraint firstItem="8Z6-Vg-9KT" firstAttribute="centerY" secondItem="Suw-ZK-aWQ" secondAttribute="centerY" id="Tr8-uo-roN"/>
+                                                <constraint firstItem="2YS-Hq-FxV" firstAttribute="leading" secondItem="gZX-99-HCk" secondAttribute="trailing" constant="70" id="Ul3-cT-ksh"/>
                                                 <constraint firstItem="UxC-H0-xz9" firstAttribute="centerY" secondItem="gZX-99-HCk" secondAttribute="centerY" id="XDA-jW-JOo"/>
                                                 <constraint firstAttribute="bottom" secondItem="gZX-99-HCk" secondAttribute="bottom" constant="8" id="XZr-Fm-tTb"/>
                                                 <constraint firstItem="jG2-qm-xBW" firstAttribute="leading" secondItem="6Bc-Lq-XRD" secondAttribute="trailing" id="Yf6-x8-kwF"/>
@@ -420,6 +422,9 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOb-ZH-M1z">
                                 <rect key="frame" x="65" y="342" width="30" height="30"/>
                                 <state key="normal" image="reply-icon"/>
+                                <connections>
+                                    <segue destination="7j7-mE-ewf" kind="presentation" identifier="isToReply" id="F4V-bG-BOM"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V2g-vX-OZP">
                                 <rect key="frame" x="172" y="342" width="30" height="30"/>
@@ -538,6 +543,6 @@
         <image name="retweet-icon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6cq-1o-5YD"/>
+        <segue reference="kPk-0Z-v2R"/>
     </inferredMetricsTieBreakers>
 </document>
