@@ -15,21 +15,29 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var screenNameLabel: UILabel!
     @IBOutlet weak var introductionLabel: UILabel!
+    @IBOutlet weak var tweetsCount: UILabel!
     @IBOutlet weak var followingCount: UILabel!
     @IBOutlet weak var followersCount: UILabel!
     
     var tweet: Tweet!
+    var user: User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        backgroundImageView.setImageWith(tweet.profileBackgroudImageUrl!)
+        user = User.currentUser
+        
+        if tweet.profileBackgroundImageUrl != nil {
+            backgroundImageView.setImageWith(tweet.profileBackgroundImageUrl!)
+        }
         profileImageView.setImageWith(tweet.profileImageUrl!)
         usernameLabel.text = tweet.name
         screenNameLabel.text = "@\(tweet.screenName!)"
-        
-        
+        introductionLabel.text = user.tagline!
+        tweetsCount.text = "\(String(describing: user.tweetsCount!)) Tweets"
+        followersCount.text = "\(String(describing: user.follwersCount!)) Followers"
+        followingCount.text = "\(String(describing: user.follweringsCount!)) Followings"
     }
 
     override func didReceiveMemoryWarning() {

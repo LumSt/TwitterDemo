@@ -12,14 +12,22 @@ class ReplyViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var textView: UITextView!
     
+    var user: User!
+    var tweet: Tweet!
     var text: String = ""
+    var isToReply: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        user = User.currentUser
         textView.delegate = self
         textView.becomeFirstResponder()
+        
+        if isToReply! {
+            textView.text = "@\(user.screenName!) "
+        }
         
         
     }
@@ -34,11 +42,25 @@ class ReplyViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func onTweetButton(_ sender: UIBarButtonItem) {
-        TwitterClient.sharedInstance?.tweet(text: text, success: { (Tweet) in
-            self.text = self.textView.text
-            print(self.text)
-            print("Tweet successfully!")
-        })
+        text = textView.text
+        let TweetMessage = text.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        
+        if isToReply != nil {
+            TwitterClient.sharedInstance?.reply(replyTweet: TweetMessage!, statusID: tweet.id as! Int, params: nil, completion: { (error:Error?) in
+                print("Reply successfully!")
+            })
+        } else {
+            TwitterClient.sharedInstance?.tweet(text: TweetMessage!, params:nil, success: { (Tweet) in
+                
+                print("Tweet successfully!")
+                
+            })
+        }
+        
+        
+        
+        
+        self.dismiss(animated: true)
     }
 
     /*

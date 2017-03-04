@@ -76,9 +76,10 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "toDetailView" {
-            let cell = sender as! UITableViewCell
-            let indexPath = tableView.indexPath(for: cell)
-            let tweet = tweets[(indexPath!.row)]
+            let cell = sender as! TweetCell
+            let tweet = cell.tweet
+//            let indexPath = tableView.indexPath(for: cell)
+//            let tweet = tweets[(indexPath!.row)]
             let vc = segue.destination as! detailViewController
             vc.tweet = tweet
             print("To details view")
@@ -92,6 +93,15 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
             let vc = segue.destination as! ProfileViewController
             vc.tweet = tweet
             print("To profile page")
+        }
+        if segue.identifier == "toReply" {
+            let button = sender as! UIButton
+            let index = button.tag
+            let tweet = tweets[index]
+            let navigation = segue.destination as! UINavigationController
+            let vc = navigation.viewControllers.first as! ReplyViewController
+            vc.isToReply = true
+            vc.tweet = tweet
         }
     }
     

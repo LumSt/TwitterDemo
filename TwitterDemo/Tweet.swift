@@ -22,7 +22,7 @@ class Tweet: NSObject {
     
     var user: NSDictionary?
     
-    var profileBackgroudImageUrl: URL?
+    var profileBackgroundImageUrl: URL?
     
     init(dictionary: NSDictionary) {
         text = dictionary["text"] as? String
@@ -59,10 +59,11 @@ class Tweet: NSObject {
         retweetedStatus = dictionary["retweet_status"] as? NSDictionary
         
         let profileBackgroundImageUrlString = user?["profile_background_image_url_https"] as? String
+        print(profileBackgroundImageUrlString ?? 1)
         if let profileBackgroundImageUrlString = profileBackgroundImageUrlString {
-            profileBackgroudImageUrl = URL(string: profileBackgroundImageUrlString)
+            profileBackgroundImageUrl = URL(string: profileBackgroundImageUrlString)
         } else {
-            profileBackgroudImageUrl = nil
+            profileBackgroundImageUrl = nil
             print("NO backbround image url!")
         }
     }

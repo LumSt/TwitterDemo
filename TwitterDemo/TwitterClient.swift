@@ -118,8 +118,7 @@ class TwitterClient: BDBOAuth1SessionManager {
         }
     }
     
-    func tweet (text: String, success: @escaping (Tweet) -> ()) {
-        let params = ["status": text] as [String:Any]
+    func tweet (text:String, params:NSDictionary?, success: @escaping (Tweet) -> ()) {
         post("1.1/statuses/update.json?status=\(text)", parameters: params, progress: nil, success: { (task: URLSessionDataTask, response:Any?) in
             let tweet = Tweet(dictionary: response as! NSDictionary)
             success(tweet)
@@ -128,5 +127,14 @@ class TwitterClient: BDBOAuth1SessionManager {
         }
     }
     
-//    func reply (text:String, replyToTweetId: )
+    func reply(replyTweet: String, statusID: Int, params: NSDictionary?, completion: @escaping (_ error: NSError?) -> () ){
+        post("1.1/statuses/update.json?in_reply_to_status_id=\(statusID)&status=\(replyTweet)", parameters: params, success: { (operation: URLSessionDataTask!, response: Any?) -> Void in
+            print("tweeted: \(replyTweet)")
+            completion(nil)
+        }, failure: { (operation: URLSessionDataTask?, error: Error?) -> Void in
+            print("Couldn't reply")
+            completion(error as NSError?)
+        }
+        )
+    }
 }
