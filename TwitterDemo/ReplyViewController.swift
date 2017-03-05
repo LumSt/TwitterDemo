@@ -15,7 +15,7 @@ class ReplyViewController: UIViewController, UITextViewDelegate {
     var user: User!
     var tweet: Tweet!
     var text: String = ""
-    var isToReply: Bool?
+    var isToReply: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,7 @@ class ReplyViewController: UIViewController, UITextViewDelegate {
         textView.delegate = self
         textView.becomeFirstResponder()
         
-        if isToReply! {
+        if isToReply {
             textView.text = "@\(tweet.screenName!) "
         }
         
@@ -45,7 +45,7 @@ class ReplyViewController: UIViewController, UITextViewDelegate {
         text = textView.text
         let TweetMessage = text.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         
-        if isToReply != nil {
+        if isToReply == true {
             TwitterClient.sharedInstance?.reply(replyTweet: TweetMessage!, statusID: tweet.id as! Int, params: nil, completion: { (error:Error?) in
                 print("Reply successfully!")
             })
@@ -56,9 +56,6 @@ class ReplyViewController: UIViewController, UITextViewDelegate {
                 
             })
         }
-        
-        
-        
         
         self.dismiss(animated: true)
     }

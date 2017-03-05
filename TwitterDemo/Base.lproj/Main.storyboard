@@ -105,7 +105,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="152"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gqQ-Kl-jd8" id="OQe-w1-cgv">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="151.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="151"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="contributor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Suw-ZK-aWQ">
@@ -253,7 +253,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="edit-icon" id="mH8-1A-vby">
                             <connections>
-                                <segue destination="7j7-mE-ewf" kind="presentation" id="6cq-1o-5YD"/>
+                                <segue destination="7j7-mE-ewf" kind="presentation" identifier="toCompose" id="6cq-1o-5YD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

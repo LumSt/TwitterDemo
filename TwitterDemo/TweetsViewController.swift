@@ -83,8 +83,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
             let vc = segue.destination as! detailViewController
             vc.tweet = tweet
             print("To details view")
-        }
-        if segue.identifier == "toProfilePage" {
+        } else if segue.identifier == "toProfilePage" {
             let button = sender as! UIButton
             let view = button.superview
             let cell = view?.superview
@@ -93,16 +92,17 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
             let vc = segue.destination as! ProfileViewController
             vc.tweet = tweet
             print("To profile page")
-        }
-        if segue.identifier == "toReply" {
+        } else if segue.identifier == "toReply" {
             let button = sender as! UIButton
-            let index = button.tag
-            let tweet = tweets[index]
+            let view = button.superview
+            let cell = view?.superview
+            let indexPath = tableView.indexPath(for: cell as! UITableViewCell)
+            let tweet = tweets[(indexPath?.row)!]
             let navigation = segue.destination as! UINavigationController
             let vc = navigation.viewControllers.first as! ReplyViewController
             vc.isToReply = true
             vc.tweet = tweet
-        }
+        } 
     }
     
 
