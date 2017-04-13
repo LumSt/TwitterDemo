@@ -99,7 +99,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
             let indexPath = tableView.indexPath(for: cell as! UITableViewCell)
             let tweet = tweets[(indexPath?.row)!]
             let navigation = segue.destination as! UINavigationController
-            let vc = navigation.viewControllers.first as! ReplyViewController
+            let vc = navigation.viewControllers.first as! ReplyViewControllert
             vc.isToReply = true
             vc.tweet = tweet
         } 
